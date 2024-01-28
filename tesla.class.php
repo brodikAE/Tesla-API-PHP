@@ -11,7 +11,7 @@ class Tesla{
 	function __construct($debug=false){
 
 		$this->en_debug = $debug;
-		$this->version = "0.0.1";
+		$this->version = "0.0.2";
 		$this->api_oauth2 = "https://auth.tesla.com/oauth2/v3";
 		$this->api_redirect = "https://auth.tesla.com/void/callback";
 		$this->api_owners = "https://owner-api.teslamotors.com/oauth/token";
