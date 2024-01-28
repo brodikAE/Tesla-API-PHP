@@ -3,7 +3,7 @@
 /*
 	Tesla API PHP
 	class file
-	v.0.0.1
+	v.0.0.2
 */
 
 class Tesla{
@@ -16,6 +16,7 @@ class Tesla{
 		$this->api_redirect = "https://auth.tesla.com/void/callback";
 		$this->api_owners = "https://owner-api.teslamotors.com/oauth/token";
 		$this->api_url = "https://owner-api.teslamotors.com/";
+		$this->vehicle_list_fix = "api/1/products?orders=true"; //VEHICLE_LIST fix 2024/01/28
 		$this->api_code_vlc = 86;
 		$this->user_agent = "TeslaPHP/".$this->version;
 		$dir = ".".DIRECTORY_SEPARATOR;
@@ -316,6 +317,10 @@ class Tesla{
 				return $endpoint." is not supported yet";
 			}
 		}
+
+		//VEHICLE_LIST fix 2024/01/28
+		if($endpoint == "VEHICLE_LIST")
+			$uri = $this->vehicle_list_fix;
 
 		$API_url = $this->api_url.$uri;
 
