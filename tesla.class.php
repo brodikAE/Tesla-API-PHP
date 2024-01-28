@@ -17,6 +17,7 @@ class Tesla{
 		$this->api_owners = "https://owner-api.teslamotors.com/oauth/token";
 		$this->api_url = "https://owner-api.teslamotors.com/";
 		$this->vehicle_list_fix = "api/1/products?orders=true"; //VEHICLE_LIST fix 2024/01/28
+		$this->vehicle_data_fix = "?endpoints=location_data%3Bcharge_state%3Bclimate_state%3Bclosures_state%3Bdrive_state%3Bgui_settings%3Bvehicle_config%3Bvehicle_state"; //VEHICLE_DATA fix 2024/01/28
 		$this->api_code_vlc = 86;
 		$this->user_agent = "TeslaPHP/".$this->version;
 		$dir = ".".DIRECTORY_SEPARATOR;
@@ -321,6 +322,10 @@ class Tesla{
 		//VEHICLE_LIST fix 2024/01/28
 		if($endpoint == "VEHICLE_LIST")
 			$uri = $this->vehicle_list_fix;
+
+		//VEHICLE_DATA fix 2024/01/28
+		if($endpoint == "VEHICLE_DATA")
+			$uri = $uri.$this->vehicle_data_fix;
 
 		$API_url = $this->api_url.$uri;
 
